@@ -26,7 +26,7 @@ body {
 	padding: 0 0.5rem;
     width: 100vw;
     height: 100vh;
-    max-width: 30rem;
+    max-width: 40rem;
 }
 
 h1 {
@@ -67,8 +67,41 @@ button:hover {
     background: #5e5d63;
 }
 
+.ranking-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ranking-container table {
+    width: 50%;
+    max-width: 40rem;
+    margin-top: 1rem;
+
+    border: 1px solid black;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.ranking-container table tr:nth-child(even) {
+    background: #d9ddd8;
+}
+
+.ranking-container table td {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+.ranking-container table th {
+    border: 1px solid black;
+    background: #74737A;
+    color: #FFF;
+    padding: 5px;
+}
+
 footer {
     height: 10vh;
     text-align: right;
     margin-right: 10em;
+    margin-top: 2em;
 }

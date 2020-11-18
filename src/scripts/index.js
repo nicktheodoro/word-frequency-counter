@@ -1,13 +1,17 @@
 const inputString = document.querySelector('#inputString');
 const submitBtn = document.querySelector('#submit-btn');
 const rankingContainer = document.querySelector('.ranking-container');
-const headersTable = ["Rank", "Count", "Word"];
+const headersRanking = ["Rank", "Count", "Word"];
 
 submitBtn.addEventListener('click', () => {
   const arrayOfWordsClean = inputString.value
-    .replace(/[?.!,"\(\)]/g, "")
+    .replace(/[?.!,"'\(\)]/g, "")
+    .replace(/[ ]{2,}/g, "")
+    .trim()
     .toLowerCase()
     .split(/[( )]/);
+
+  console.log(arrayOfWordsClean)
   const arrayCountedAndSorted = sort(count(arrayOfWordsClean));
   createRanking(arrayCountedAndSorted);
 })
@@ -32,8 +36,16 @@ function createRanking(object) {
   const table = document.createElement('table');
   rankingContainer.appendChild(table);
 
-  
-  object.forEach(function (tableElement, rankIndex){
+  const tr = document.createElement('tr');
+  table.appendChild(tr);
+  headersRanking.forEach(currentValue => {
+    const th = document.createElement('th');
+    th.appendChild(document.createTextNode(currentValue));
+    tr.appendChild(th);
+  });
+  table.appendChild(tr)
+
+  object.forEach(function (tableElement, rankIndex) {
     const trBody = document.createElement('tr');
     const td1 = document.createElement('td');
     td1.appendChild(document.createTextNode(rankIndex + 1));
